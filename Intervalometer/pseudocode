@@ -1,0 +1,123 @@
++=======:========+
+|C:nn E:nnn L:nn |
+|P:nnnn    *Stop*|
++=======:========+
+
++=======:========+
+|C:nn E:nnn L:nn |
+|nnnn/NNNN  *Run*|
++=======:========+
+
++=======:========+
+|Elapsed time:   |
+|     NNN min    |
++=======:========+
+
++=======:========+
+|Frame rate:     |
+|     NN fps     |
++=======:========+
+
++=======:========+      +=======:========+
+|Program mode:   |      |Program mode:   |
+|   Duration     |      |   Interval     |
++=======:========+      +=======:========+
+
++=======:========+      +=======:========+ 
+|Length of video:|      |Capture delay:  |
+|     NN min     |      |     NN sec     |
++=======:========+      +=======:========+
+
+
+void loop()
+{
+   if(mode == RUNNING) {
+	// We only care about the Run/Stop button being pressed
+	If Run/Stop button pressed
+	    mode = STOPPED
+	    page = PG_MAIN
+	    updateDisplay(true)
+        Otherwise
+	    if it's time to take a picture
+		fire the camera
+		update the display
+   }
+   if(mode == STOPPED) {
+	// Two viable possibilities -- the Menu button was pressed, or
+	// the Run/Stop button was pressed
+	if Run/Stop button pressed
+	    mode = RUNNING
+	    page = PG_MAIN
+	    updateDisplay(true)
+        else if Menu button was pressed
+	    advance to the first menu page
+	    updateDisplay(true)
+	// Not going to take a picture in STOPPED mode, no need to
+	// check the elapsed interval
+    }
+    if(mode == MENU) {
+	// Three viable possibilities -- the Menu button was pressed in order
+	// to go to the next menu, or the +/- buttons were pressed to change
+	// the value displayed on this menu page
+	if Menu button was pressed
+	    advance to the next menu page (which might be the first one)
+	    updateDisplay(true)
+        else if Plus button was pressed
+	    increase the value of the displayed parameter
+	    updateDisplay(false)
+        else if Minus button was pressed
+	    decrease the value of the displyaed parameter
+	    updateDisplay(true)
+	}
+}
+
+void dummy()
+{ 
+  /* Read Run/Stop pusbutton state */
+  runBtnState = digitalRead(runBtnPin);
+  
+  /* Compare current button state to previous state */
+  if(runBtnState != lastRunBtnState) {
+    if(runBtnState == HIGH) {
+      if(mode == STOPPED) {
+        mode = RUNNING;
+        /* Calculate times lapse variables */
+        recalculate();
+        updateDisplay(true); 1G
+      }
+      else {
+        mode = STOPPED;
+        updateDisplay(true);
+      }
+    }
+    delay(50);  /* debounce */
+  }
+  lastRunBtnState = runBtnState;  // Save button state
+  
+  /* Is the timer running?  If so do work */
+  if(mode == RUNNING) {
+    /* If we've taken our last picture, stop */
+    if(remPictures == 0) {
+      mode = STOPPED;
+      updateDisplay(true);
+    }
+    else {
+      /*
+      ** If the elapsed time since the last picture is
+      ** greater than the desired interval then it is time
+      ** to take another picture.
+      */
+      unsigned long currentMillis = millis();
+      if(currentMillis - previousMillis > (captureDelay*1000)) {
+        previousMillis = currentMillis;
+        updateDisplay(false);
+        triggerCamera();
+      }
+    }
+  }
+  /* Else the timer is stopped...*/
+  else {
+    // updateDisplay();
+  }
+}
+
