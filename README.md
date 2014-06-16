@@ -19,17 +19,19 @@ This is my second major Arduino project, though the first one to get put into ev
 
 Motivated by the "build your own name tag" activity at the Make Hardware Innovation Workshop, I decided to craft something a little less spontaneous but more elaborate. Imagine the traditional "Hello, My Name Is..." badge redone on a comparably-sized circuit board using an Arduino, OLED display, and lithium-polymer battery.
 
-**Hexbright (Collection)**
+**HexBright (Collection)**
 
-I love flashlights so was excited (delighted, even) to discover 'Hexbright', a very bright, well-made, compact LED flashlight that had an Arduino and some sensors on board and could be programmed to behave however you wanted it to. So far I've only made a few simple modifications to the factory-installed program, but I've also had fun trying some of the novel variations developed by other folks in the Hexbright community.
+I love flashlights so was excited (delighted, even) to discover [HexBright](http://www.hexbright.com), a very bright, well-made, compact LED flashlight that had an Arduino and some sensors on board and could be programmed to behave however you wanted it to. So far I've only made a few simple modifications to the factory-installed program, but I've also had fun trying some of the novel variations developed by other folks in the HexBright community.
 
 **Thermometers (Collection)**
 
 As a precursor to my weather station project I spent time experimenting with various analog and digital temperature sensors, and with different ways to display temperature information including LCD and in binary with LEDs.  Even a basic thermometer is useful, and so this has come to be my standard Arduino demo program (even moreso than blinking an LED).
 
 **Trinket (Collection)**
+
 Adafruit's [Trinket](http://www.adafruit.com/products/1501) is a great Arduino-like microcontroller based on the Atmel ATtiny85.  It is somewhat Arduino compatible but there are some tradeoffs to get such a small size (1.2 x 0.6 inches) and low price ($7.95).  Sketches developed for Trinket won't necessarily run on a full Arduino though in some cases it is practical to use conditional compilation to use the same source code with either.  Just to be explicit about it, I've collected my Trinket-based Sketches in a separate collection.
 
-**LED of All Types (Collection)**
+**LED Projects (Collection)**
+
 I can't seem to resist the appeal of LEDs of all kinds, such that it seems like I always have a couple of LED projects under way at any point.  I've kept all those sketches together in this collection, though they embrace a wide range of target hardware - RGB LED strips, 8x8 RGB LED matrices, 7-segment displays, and special LED products like the BlinkM and MaxM modules from ThingM.
 
