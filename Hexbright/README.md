@@ -13,5 +13,5 @@ I was pretty happy with the standard control program, which primarily allows cyc
 
 **Community Code**
 
-I've grabbed a few of community versions for reference and probably future modifications.  You'll find them here as `hexbright_factory` (the version that comes pre-installed on HexBright) and `hexbright4` (which uses the built-in accelerometer to enable interesting additional control modes).
+I've grabbed a few of community versions for reference and probably future modifications.  You'll find them here as `hexbright_factory` (the version that comes pre-installed on HexBright) and `hexbright4` (which uses the built-in accelerometer to enable interesting additional control modes). Newer versions might be available on the official repository, so if you're interested in doing anything with these you should check there first.
 
