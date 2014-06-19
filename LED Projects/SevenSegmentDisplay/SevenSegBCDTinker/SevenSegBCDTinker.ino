@@ -4,6 +4,10 @@
  * Author: David Bryant (djbryant@gmail.com)
  * Date: 23 March 2014
  *
+ * Generally this is the same as the non-BCD version but we convert the
+ * 0-9 value to be displayed into a 4-bit BCD value, then drive the four
+ * lines needed to communicate that th the BCD decoder/driver.
+ *
  * This version is built for use with a CD74HC4543 7-segment decoder/driver,
  * wired as follows:
  *
@@ -88,6 +92,10 @@ void setDigit(int d,int n)
 {
   int i, mask;
   
+  // Turn all the digits off. Note that we turn all digits off
+  // then just set the right segments and re-illuminate one digit
+  // so this only works if the main loop is sweeping through the
+  // digits fast enough such that users don't see the digits flickering
   for(int i=0;i<DIGITS;i++) {
     digitalWrite(digitMap[i],DIGIT_OFF);
   }

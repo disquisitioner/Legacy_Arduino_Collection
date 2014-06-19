@@ -2,6 +2,20 @@
  * Program for experimenting with seven-segment LED displays
  * Author: David Bryant (djbryant@gmail.com)
  * Date: 23 March 2014
+ *
+ * This version uses a shift register to control the segments in the display,
+ * so only three pins are required (Strobe, Clock and Data In).  There still needs to
+ * be one pin for each digit, though you could drive that through a shift register too
+ * (especially if you had eight digits).
+ *
+ * The main loop handles refreshing the display every time through, though it is
+ * also incrementing a counter to be displayed every time through.  This likely wouldn't be 
+ * practical for any non-trivial application, but it is fine for learning how to manipulate
+ * seven-segment displays.
+ *
+ * Written to work with a four digit display, and though it wouldn't be hard to expand that
+ * it requires more work than just changing the DIGITS value below...
+ * 
  */
   
 const byte SEGMENT_ON = HIGH;
@@ -59,7 +73,6 @@ void loop()
 {
   if(val > 9999) val = 0;
   showNumber(val);
-  // showNumber(1234);
   val++;
 }
 
@@ -87,18 +100,26 @@ void setDigit(int d,int n)
 {
   int i, mask;
   
+  // Turn all the digits off. Note that we turn all digits off
+  // then just set the right segments and re-illuminate one digit
+  // so this only works if the main loop is sweeping through the
+  // digits fast enough such that users don't see the digits flickering
   for(int i=0;i<DIGITS;i++) {
     digitalWrite(digitMap[i],DIGIT_OFF);
   }
   
+  // Fetch the right segment mask for this particular numeric value
   mask = pgm_read_byte(SevenSegMap + n);
+  
   // take the latchPin low so 
-  // the LEDs don't change while you're sending in bits:
+  // the segments don't change while you're sending in bits:
   digitalWrite(latchPin, LOW);
-  // shift out the bits:
+  
+  // shift out the bits
   shiftOut(dataPin, clockPin, MSBFIRST, mask);  
 
-  //take the latch pin high so the LEDs will light up:
+  // take the latch pin high to latch the values into the shift register
+  // output pins
   digitalWrite(latchPin, HIGH);
   
   digitalWrite(digitMap[d],DIGIT_ON);  // Enable digit

@@ -1,9 +1,21 @@
-// Demonstration of LED multiplexing with Arduino using interrupts
-// Based on code by Nick Gammon
-// Date: 2 December 2013
-
-// Put a suitable resistor in series with each segment LED (eg. 180 ohm)
-
+/*
+ * Program for experimenting with seven-segment LED displays
+ * Author: David Bryant (djbryant@gmail.com)
+ * Date: 23 March 2014
+ *
+ * The sketch implements a digital thermometer using a four digit seven-segment 
+ * LED display.  Temperature is read from a DS18bB20 digital temperature sensor.
+ * Display refresh is handled through a timer interrupt, and the output segments 
+ * are handled using an 8-bit shift register.
+ *
+ * Configuring Arduino timers isn't difficult, but it requires some careful thought
+ * about how often you want the timer to generate an interrupt, and paying close 
+ * attention to some arcane configuration instructions to get the timer properly
+ * programmed.  This sketch is based on an excellent examples and tutorials by Nick 
+ * Gammon at http://www.gammon.com.au/forum/?id=11488 and http://www.gammon.com.au/forum/?id=12314
+ * and via Instructables at
+ * http://www.instructables.com/id/Arduino-Timer-Interrupts/step1/Prescalers-and-the-Compare-Match-Register/
+ */
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
@@ -92,7 +104,11 @@ const PROGMEM byte digitSegments [PATTERN_COUNT]  =
 volatile byte numberToShow [DIGITS] = { SHOW_H, SHOW_E, SHOW_L, 0 };  // HELO
 volatile byte dpDigit = 0xFF;  // Decimal point digit, if > DIGITS then no DP
 
-// timer Interrupt Service Routine (ISR) to update the LEDs
+/*
+ * Timer Interrupt Service Routine (ISR) to update the LEDs. Specifically it
+ * updates one digit in the display every time it is called, and then moves on
+ * to the next digit on the next invocation.
+ */
 ISR (TIMER2_COMPA_vect) 
   {
   static byte digit = 0;
@@ -148,7 +164,16 @@ void setup()
   TCCR2A = 0;
   TCCR2B = 0;
 
-  // Timer 2 - gives us a constant interrupt to refresh the LED display
+  /*
+   * Timer 2 - gives us a constant interrupt to refresh the LED display
+   *
+   * Overall we want to refresh the display every 2ms so for a 4 digit display
+   * that means each digit gets updated every 0.5ms.  That calls for a timer interrupt
+   * frequency of 2KHz. With a 16MHz system clock then we need to divide that by 8000 
+   * so let's use 8192 (a good approximation that's a power of 2).  Timer 2 is an 8 bit 
+   * timer so we can't just have it count to 8192 but we can have it count to 64 and 
+   * then use a pre-scaler value of 128 to get to 8192 (as 64 * 128 = 8192).
+   */
   TCCR2A = bit (WGM21) ;   // CTC mode
   OCR2A  = 63;            // count up to 64  (zero relative!!!!)
   // Timer 2 - interrupt on match at about 2 kHz

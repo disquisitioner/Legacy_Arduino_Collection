@@ -2,6 +2,22 @@
  * Program for experimenting with seven-segment LED displays
  * Author: David Bryant (djbryant@gmail.com)
  * Date: 23 March 2014
+ *
+ * Functionally all this sketch does is display a counter.  Nothing fancy...
+ *
+ * This version takes the most basic approach.  Every segment in the display is driven by
+ * a separate Arduino pin, and each digit is controlled by its own pin.  That means using
+ * every digital pin on an Arduino Uno (not including pins 0 and 1 as they're used for serial
+ * data TX/RX in most settings).
+ *
+ * The main loop handles refreshing the display every time through, though it is
+ * also incrementing a counter to be displayed every time through.  This likely wouldn't be 
+ * practical for any non-trivial application, but it is fine for learning how to manipulate
+ * seven-segment displays.
+ *
+ * Written to work with a four digit display, and though it wouldn't be hard to expand that
+ * it requires more work than just changing the DIGITS value below...
+ * 
  */
   
 const byte SEGMENT_ON = HIGH;
@@ -73,16 +89,24 @@ void showNumber(int n)
   setDigit(3,d4);
 }
 
-// Display a numeric value (0-9) on a digit (0-3)
+// Display a numeric value (0-9) on a digit (0-3). 
 void setDigit(int d,int n)
 {
   int i, mask;
   
+  // Turn all the digits off. Note that we turn all digits off
+  // then just set the right segments and re-illuminate one digit
+  // so this only works if the main loop is sweeping through the
+  // digits fast enough such that users don't see the digits flickering
   for(int i=0;i<DIGITS;i++) {
     digitalWrite(digitMap[i],DIGIT_OFF);
   }
   
+  // Fetch the right segment mask for this particular numeric value
   mask = pgm_read_byte(SevenSegMap + n);
+  
+  // Sweep through the mask for this digit and turn on segments
+  // that need to be illuminated
   for(i=0;i<8;i++) {
     if(mask & (B10000000 >>i)) {
       digitalWrite(segPinMap[i],SEGMENT_ON);
@@ -91,6 +115,8 @@ void setDigit(int d,int n)
       digitalWrite(segPinMap[i],SEGMENT_OFF);
     }
   }
+  // Now that all the segment lines are set correctly, turn the 
+  // target digit back on.
   digitalWrite(digitMap[d],DIGIT_ON);  // Enable digit
   delay(5);
 }
