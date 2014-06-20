@@ -10,7 +10,7 @@ The classic "Hello World" program everyone new to Arduino experiences first is `
 
 The fundamental building block of twenty-first century Christmas decorations and geeky home lighting is the LED strip, which packages a linear collection of LEDs into a single, controllable strand.  Basic ones tie all the LEDs, typically of some RGB type, together so they all will display the same color at the same time.  Advanced ones have controllers tied to each LED so every one can be controlled separately and the entire strand can be used to create elaborate, animated multi-color displays.  The large number of LEDs typically used requires more current than an Arduino or other microcontroller can source directly, so LED strip projects generally require a combination of software and high-current interface hardware.
 
-**RGB LED Backpack**
+**RGB LED Matrix**
 
 If one LED is good and many LEDs are better then an addressable matrix of LEDs must be great.  Even greater is if those LEDs are multi-color RGB ones that can be used to display any color imaginable.  At Maker Faire 2014 I met Pierce Nichols who runs [Logos Electromechanical](http://www.logos-electro.com), a robotics and mechatronics products and consulting company in Seattle.  Pierce had several of his products on display and I couldn't resist his [RGB LED Matrix](http://www.logos-electro.com/store/rgb-led-matrix-r2), which provides an 8x8 RGB LED display in a 60mm square package with a built-in I2C controller.  Pierce has written an Arduino library so it is easy to control the RGB LED Matrix through a simple API.
 

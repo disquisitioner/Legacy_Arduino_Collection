@@ -1,15 +1,15 @@
 Seven-Segment Display Projects
 ==============================
 
-## The Best Approach
+Seven-segment displays present an interesting challenge.   Technically they're just a bunch of LEDs, so controlling them with an Arduino is trivial and quite familiar. However, they are a *lot* of LEDs, as a four digit seven-segment display with decimal points means you need to control 32 different LEDs.  Happily there are a variety of schemes for doing that, ranging from nearly all software to nearly all hardware.  I love LEDs, so I'm enjoying trying as many of the different schemes as I can find.
 
-**Using LedControl Library**
+## My Preferred Approach
 
-LedControl is an Arduino library developed by Eberhard Fahle for using MAX7219 and MAX7221 LED display drivers, distributed via both [GitHub](https://github.com/wayoda/LedControl) and the [Arduino Playground](http://playground.arduino.cc/Main/LedControl).  The library exposes all the various capabilities of the MAX7219/MAX7221, which are quite considerable as you'll see below.
+**Using the MAX7219/MAX7221**
 
 The MAX7219/MAX7221 are compact serial input/output common-cathode drivers that easily interface microcontrollers to seven-segment numeric LED displays of up to eight digits, or to bar-graph displays, or to 64 individual LEDs (often in an 8x8 matrix).  Everything you need is provided on a single, 24-pin chip including multiplexing scan circuitry, segment and digit drivers using a single external resistor to control drive current for all LEDs, and an SPI-style serial interface for sending data using only three pins (plus ground).  You can chain multiple MAX7219/MAX7221 drivers together so as to drive even more digits, bar-graphs, or individual LEDs without using any addiitonal control pins.
 
-I discovered the MAX7219 after having spent quite a bit of time experimenting with shift registers (see below), BCD decoders (see below), interrupt-control logic (see below), and directly driving using lots of Arduino pins.  I have to say the MAX7219 is a great solution for a number of reasons:
+I discovered the MAX7219 after having spent quite a bit of time experimenting with shift registers (see below), BCD decoders (see below), interrupt-control logic (see below), and directly driving using lots of Arduino pins (see below). I have to say the MAX7219 is a great solution for a number of reasons:
 
 *  You won't need much software to get the job done as you don't need to worry about multiplexing across
    the digits to be displayed, controlling each digit separately, or figuring out which segments to light up.
@@ -23,9 +23,12 @@ I discovered the MAX7219 after having spent quite a bit of time experimenting wi
 
 There's still quite a bit of wiring to be done to use the MAX7219/7221 as it must take input from the Arduino (three pins) and control the seven-segment display through one output for each digit (eight lines) and one output for each segment (eight lines). There's also the usual VCC and GND connections, plus the external resistor for controlling segment drive current.
 
+As is so often the case with Arduino, specialized software for using the MAX7219 has already been created by other folks in the community. [LedControl](http://www.wayoda.org/arduino/ledcontrol/) is an Arduino library developed by Eberhard Fahle specifically for using the MAX7221/7219, either with seven-segment displays or an LED matrix.  It's described on the [Arduino Playground](http://playground.arduino.cc/Main/LedControl) and available via [GitHub](https://github.com/wayoda/LedControl).  The library exposes all the various capabilities of the MAX7219/MAX7221, which are quite considerable as I've briefly described above.
+
 At the moment I have built one Arduino sketch, `LedControl7Segment.ino`, using the LedControl library and it is largely intended just to help me get a full feel for the library's API.  It only uses the MAX7219 and eight digts of attached seven-segment display to provide a simple counter, but also contains convenience functions I've written to properly format and display integers and floating point numbers on that eight-digit display.
 
 ## Other Alternatives
+
 
 **Simple, Direct Control**
 
