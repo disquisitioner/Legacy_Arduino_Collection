@@ -2,7 +2,7 @@
  * Binary Thermometer
  * Read temperature from TMP36 sensor & display in binary using LEDs
  *
- * Author: David Bryant (djbryant@gmail.com)
+ * Author: David Bryant (david@orangemoose.com)
  * Date: January 29, 2012
  *
  * This was one of my first Arduino programs, having gotten a Starter Kit for

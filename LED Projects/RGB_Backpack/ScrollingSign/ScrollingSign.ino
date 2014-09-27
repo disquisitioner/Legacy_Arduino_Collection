@@ -6,7 +6,7 @@
  * specifically the RGB LED Matrix from Logos Electromechanical
  * (http://www.logos-electro.com/store/rgb-led-matrix-r2)
  *
- * Author: David Bryant (djbryant@gmail.com)
+ * Author: David Bryant (david@orangemoose.com)
  * Date: 12-Jun-2014
  * Version: 1.0
  *

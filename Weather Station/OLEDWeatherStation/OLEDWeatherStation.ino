@@ -11,7 +11,7 @@
  * OLED connected via SPI.  Several different display screens are generated on
  * the OLED, with a push button used to step among the screens.
  *
- * Author: David Bryant <djbryant@gmail.com>
+ * Author: David Bryant <david@orangemoose.com>
  * Version 1.0, 1 May, 2013
  * License: CC BY-SA v3.0 - http://creativecommons.org/licenses/by-sa/3.0/ 
  *

@@ -1,6 +1,6 @@
 /*
  * Program for experimenting with seven-segment LED displays
- * Author: David Bryant (djbryant@gmail.com)
+ * Author: David Bryant (david@orangemoose.com)
  * Date: 23 March 2014
  *
  * The sketch implements a digital thermometer using a four digit seven-segment 

@@ -7,7 +7,7 @@
  * digital sensor and associated library from Miles Burton
  * (http://www.milesburton.com/?title=Dallas_Temperature_Control_Library)
  *
- * Author: David Bryant (djbryant@gmail.com)
+ * Author: David Bryant (david@orangemoose.com)
  * Version 1.1, 17-August-2012
  *
  * Arduino Pinouts (for 4-wire parallel interface to LCD)

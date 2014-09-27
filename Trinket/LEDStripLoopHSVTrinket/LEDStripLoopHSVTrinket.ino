@@ -10,7 +10,7 @@
  *
  * Copyright (c) 2013 David Bryant <djbryant@gmail.com>
  *
- * Author : David Bryant (djbryant@gmail.com)
+ * Author : David Bryant (david@orangemoose.com)
  * Version: 1.0
  * Date   : Dec 2013
  */

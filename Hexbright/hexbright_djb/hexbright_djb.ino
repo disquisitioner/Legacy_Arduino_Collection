@@ -8,7 +8,7 @@
  * To get this to work we need an OFF_PREVIEW state comparable to BLINKING_PREVIEW
  * so we can absorb the button release after a long press in any active mode.
  *
- * AUTHOR: David Bryant (djbryant@gmail.com)
+ * AUTHOR: David Bryant (david@orangemoose.com)
  * DATE  : October 10, 2013
  * Version: 1.0
  */

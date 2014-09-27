@@ -7,7 +7,7 @@
  * though in incorporate it adopted some inefficient data passing schemes which I've removed
  * here to streamline the math.
  *
- * Author : David Bryant (djbryant@gmail.com)
+ * Author : David Bryant (david@orangemoose.com)
  * Version: 1.0
  * Date   : Dec 2013
  */

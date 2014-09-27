@@ -3,7 +3,7 @@
  * to use the TMP36 analog temperature sensor operating at 3.3V.  Displays
  * information on a 16x2 LCD.
  *
- * Author: David Bryant (djbryant@gmail.com)
+ * Author: David Bryant (david@orangemoose.com)
  * Version 2.0, 12-September-2012
  *
  * Arduino Pinouts (for 4-wire parallel interface to LCD)

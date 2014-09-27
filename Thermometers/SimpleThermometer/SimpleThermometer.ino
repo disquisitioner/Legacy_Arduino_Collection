@@ -12,7 +12,7 @@
  * To reduce variability in sensor readings the TMP36 is operated at
  * 3.3V rather than 5V, so readings are scaled to the range 0->3.3V
  *
- * Author: David Bryant (djbryant@gmail.com)
+ * Author: David Bryant (david@orangemoose.com)
  * Version 1.0, 12-August-2012
  *
  * Arduino Pinouts (for 4-wire parallel interface to LCD)

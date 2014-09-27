@@ -7,7 +7,7 @@
  * sensors.  This version is supports the Dallas Semiconductor DS18B20 digital
  * temperature sensor and the BMP085 combination temperature & pressure sensor.
  *
- * Author: David Bryant <djbryant@gmail.com>
+ * Author: David Bryant <david@orangemoose.com>
  * Version 1.0, 25 August, 2012
  * License: CC BY-SA v3.0 - http://creativecommons.org/licenses/by-sa/3.0/ 
  *

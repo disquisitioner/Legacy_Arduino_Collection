@@ -1,7 +1,7 @@
 /*
  * Program for experimenting with seven-segment LED displays using
  * a BCD to 7-Segment decoder/driver
- * Author: David Bryant (djbryant@gmail.com)
+ * Author: David Bryant (david@orangemoose.com)
  * Date: 23 March 2014
  *
  * Generally this is the same as the non-BCD version but we convert the

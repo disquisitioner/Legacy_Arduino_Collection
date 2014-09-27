@@ -1,7 +1,7 @@
 /*
  * Intervalometer for time-lapse photography
  *
- * Author: David Bryant (david_bryant@yahoo.com)
+ * Author: David Bryant (david@orangemoose.com)
  * February 19, 2012
  * 
  * Arduino Pinouts -- (without use of a shift register)
