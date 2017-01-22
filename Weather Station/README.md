@@ -62,6 +62,7 @@ Teensyduino convinced me to metamorphose the project into something
 new, with a new name.
 
 **Home Weather Station (Project)**
+
 The next step in the evolution of my home weather station project
 was to design a customer printed circuit board (PCB) and transition away
 from the breadboard approach I'd been using for all the electronics
