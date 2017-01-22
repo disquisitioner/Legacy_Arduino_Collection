@@ -35,7 +35,7 @@ name.
 
 **Weather Station PCB (Collection)**
 
-OK, I'll admit it.  When I built my first Arduino-powered weather station in late 2012 I did what many hobbyists do, namely I assembled all the electronics components and
+OK, I'll admit it.  When I built my first Arduino-powered weather station in late 2012 I did what many hobbyists do, namely assembled all the electronics components and
 connecting them using a breadboard.  I love breadboards and have a drawer full of them. I've even sponsored a Kickstarter project to build an Arduino inside of a working
 breadboard. The breadboard was a vital component from the beginning as it's how the indoor sensor and display were integrated, and it's where I handled connections to
 all the various outdoor sensors. With the expanded 'Weather Station Plus' version I also needed to debounce the switch-based interface to the rain gauge and anemometer.
