@@ -22,11 +22,11 @@
 #include <Adafruit_SSD1306.h>
 
 // Specify Arduino pins used to control the OLED
-#define OLED_MOSI  13 // OLED "Data" pin (SPI MOSI = output from master device, so from Arduino thus = Data)
-#define OLED_CLK   12
+#define OLED_MOSI   9 // OLED "Data" pin (SPI MOSI = output from master device, so from Arduino thus = Data)
+#define OLED_CLK   10
 #define OLED_DC    11
-#define OLED_RESET 10
-#define OLED_CS     9
+#define OLED_RESET 13
+#define OLED_CS    12
 Adafruit_SSD1306 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 
 #if (SSD1306_LCDHEIGHT != 64)
@@ -46,7 +46,7 @@ Adafruit_SSD1306 display(OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
 // 
 
 // Character bitmaps for DejaVu Sans Mono 20pt
-static unsigned char PROGMEM dejaVuSansMono_20ptBitmaps[] = 
+const static unsigned char PROGMEM dejaVuSansMono_20ptBitmaps[] = 
 {
 	// @0 '!' (4 pixels wide)
 	B00000000, //     
