@@ -1,0 +1,13 @@
+# Random meaningless files
+.DS_Store
+
+# Examples, test code, and tinkering
+Vendor-Examples/*
+
+# Documentation and data sheets
+Data\ Sheets\ &\ Notes
+
+# System files & libraries for third-party components & compatitibles
+Libraries/*
+hardware/*
+boards.txt

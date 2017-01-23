@@ -52,14 +52,10 @@ wanted to expand it.  The first system only measured outdoor
 temperature, indoor temperature, and barometric presure.  I wanted
 to add rainfall measurement along with wind speed and direction and
 found a set of sensors at Sparkfun that were perfectly suited for
-that purpose. However, I also discovered that the code I'd written
-for the Arduino had grown to the point that it no longer fit
-comfortably within the memory limitations of an Arduino Uno.  Luckily
-I discovered Teensyduino, an Arduino-compatible system build on a
-more powerful processor with much greater memory, stack space, and
-performance.  The combination of more sensors and the shift to the
-Teensyduino convinced me to metamorphose the project into something
-new, with a new name.
+that purpose. That turned into a more interesting effort that I had
+expected as those sensors operated very differently -- the rain gauge
+and anemometer as switches that needed to be handled via interrupts
+and the wind vane as a variable resistor network.
 
 **Home Weather Station (Project)**
 
@@ -72,9 +68,21 @@ temperature and barometric pressure had been retired in favor of
 a newer version, the BMP180.  So I ordered
 a new BMP180 and modified my weather station code to use it instead of the
 BMP085.  Because I felt I was (finally) ready for a more complete project I
-boldy chose the name 'Home Weather Station' for this version.  Going forward
-I'd like to keep evolving this code path, at least as the basis for use
-with my custom PCB.
+boldy chose the name 'Home Weather Station' for this version.  
+
+**Home Weather Station - Teensy (Project)**
+
+Alas, with all the changes leading up to this as my (finally)
+complete home weather station, I discovered that the code I'd written
+for the Arduino had grown to the point that it no longer fit
+comfortably within the memory limitations of an Arduino Uno.  Luckily
+I discovered Teensyduino, an Arduino-compatible system build on a
+more powerful processor with much greater memory, stack space, and
+performance. Teensy made other things possible, e.g. all digital
+pins on Teensy are interrupt enabled so I could change how I used
+those pins to simplify the code.  Going forward I plan to keep
+evolving this code path, at least as the basis for use with my
+custom PCB.
 
 **Weather Station PCB (Collection)**
 
