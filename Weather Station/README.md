@@ -22,6 +22,10 @@ portability, and pretty much anything else you can think of.
 So the collection of projects here represents a variety of ways
 I've explored evolving the basic weather station concept.
 
+*NOTE:* If you're just after the latest version of my home weather
+station software then you're looking for the 'Home Weather Station - Teensy'
+version included here.
+
 ## Content
 
 **LCD Weather Station (Project)**
