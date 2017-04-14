@@ -24,7 +24,7 @@ I've explored evolving the basic weather station concept.
 
 *NOTE:* If you're just after the latest version of my home weather
 station software then you're looking for the 'Home Weather Station - Teensy'
-version included here.
+project included here and described below.
 
 ## Content
 
@@ -74,7 +74,7 @@ a new BMP180 and modified my weather station code to use it instead of the
 BMP085.  Because I felt I was (finally) ready for a more complete project I
 boldy chose the name 'Home Weather Station' for this version.  
 
-**Home Weather Station - Teensy (Project)**
+**Home Weather Station - Teensy (Project) -- LATEST VERSION**
 
 Alas, with all the changes leading up to this as my (finally)
 complete home weather station, I discovered that the code I'd written
@@ -87,6 +87,16 @@ pins on Teensy are interrupt enabled so I could change how I used
 those pins to simplify the code.  Going forward I plan to keep
 evolving this code path, at least as the basis for use with my
 custom PCB.
+
+**WX Data Simulator (Project)**
+
+In building other systems to receive data from the weather station 
+(such as my Weather Uplink project) I quickly realized it was easier
+if I could configure an Arduino to simulate the full weather station
+and report synthetic sensor data in the proper format.  That's what
+this Arduino script does. It does not require any sensors or display,
+instead just generating reasonable random weather data and sending it
+out via the serial port in the proper format.
 
 **Weather Station PCB (Collection)**
 
