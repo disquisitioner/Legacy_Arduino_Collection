@@ -1,0 +1,12 @@
+LEDControl	KEYWORD1
+getMode	KEYWORD2
+setOneColor	KEYWORD2
+setRunFwd	KEYWORD2
+setRunRev	KEYWORD2
+setCylon	KEYWORD2
+setRainbowFwd	KEYWORD2
+setRainbowRev	KEYWORD2
+setPattern	KEYWORD2
+shiftFwd	KEYWORD2
+shiftRev	KEYWORD2
+update	KEYWORD2
