@@ -7,6 +7,8 @@ setCylon	KEYWORD2
 setRainbowFwd	KEYWORD2
 setRainbowRev	KEYWORD2
 setPattern	KEYWORD2
+setProgress	KEYWORD2
+setMarquee	KEYWORD2
 shiftFwd	KEYWORD2
 shiftRev	KEYWORD2
 update	KEYWORD2

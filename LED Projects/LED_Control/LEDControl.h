@@ -11,6 +11,7 @@
 #define MODE_RAINBR 6
 #define MODE_CYLON  7
 #define MODE_BITMAP 8
+#define MODE_MARQUEE	9
 #define NUM_MODES   10
 
 #include "Arduino.h"
@@ -26,6 +27,8 @@ class LEDControl
     void setRainbowFwd();
     void setRainbowRev();
     void setPattern(CRGB color, unsigned long bitmap);
+    void setProgress(CRGB color, int percent);
+    void setMarquee(CRGB color, unsigned long bitmap);
     void shiftFwd();
     void shiftRev();
     void update();

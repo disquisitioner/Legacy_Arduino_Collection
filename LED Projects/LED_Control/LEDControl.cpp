@@ -94,6 +94,30 @@ void LEDControl::setPattern(CRGB color, unsigned long bitmap)
   _bitmap = bitmap;
 }
 
+// Progress bar mode uses the underlying Bitmap animation to
+// display a fixed number of LEDs that represent the percentage
+// progress (calculated as a fraction of total LEDs).  Progress
+// is indicate starting from led #0 in the strip.
+void LEDControl::setProgress(CRGB color, int percent)
+{
+	_newMode = true;
+	_mode = MODE_BITMAP;
+	_color = color;
+	/* Use percent to calculate proper bitmap */
+	if(percent > 100) percent = 100;
+	if(percent < 0)   percent = 0;
+	int lit = (_ledCount*(percent))/100.0;
+	_bitmap = ((1UL<<lit)-1);
+}
+
+void LEDControl::setMarquee(CRGB color, unsigned long bitmap)
+{
+  _newMode = true;
+  _mode = MODE_MARQUEE;
+  _color = color;
+  _bitmap = bitmap;	
+}
+
 // Master update function, called once per strip each clock cycle to
 // do whatever is needed to sequence the strip ahead by one 'tick'.
 // Uses the current mode of the strip to figure out what to do.
@@ -221,14 +245,34 @@ void LEDControl::update()
       if(_newMode) {
         fill_solid(_leds,_ledCount,CRGB::Black);
         int m = min(_ledCount,32);
-        unsigned long mask = 1;
+        unsigned long mask = 1;  // Is unsigned long
         for(int i=0;i<m;i++) {
           if( (_bitmap & (mask<<i)) != 0) { _leds[i] = _color; }
         }
         _newMode = false;
       }
       break;
-    
+
+ 	case MODE_MARQUEE:
+ 		if(_newMode) {
+ 			fill_solid(_leds,_ledCount,CRGB::Black);
+ 			int m = min(_ledCount,32);
+ 			unsigned long mask = 1;
+ 			for(int i=0;i<m;i++) {
+          		if( (_bitmap & (mask<<i)) != 0) { _leds[i] = _color; }
+ 			}
+ 			_newMode = false;
+ 		}
+ 		else {
+ 			int m = min(_ledCount,32);
+ 			_bitmap = (_bitmap << 1UL) | (_bitmap >> ((unsigned long)(m-1))) ;
+ 			unsigned long mask = 1;
+ 			for(int i=0;i<m;i++) {
+          		if( (_bitmap & (mask<<i)) != 0) { _leds[i] = _color; }
+          		else { _leds[i] = CRGB::Black; }
+ 			}
+ 		}
+
     default:
       Serial.println("Unrecognized mode");
       break;
