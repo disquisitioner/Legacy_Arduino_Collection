@@ -1,5 +1,14 @@
-Arduino
-===============
+Legacy Arduino Collection
+=========================
+
+**EDITOR'S NOTE:**  This repository dates from my very earliest explorations with Arduino and GitHub in 2012.  At that point I'd been exploring Arduino development enough to have produced a variety of simple sketches in a number of areas often first encountered by Arduino novices -- LEDs, simple temperature sensors, and different Arduino-compatibler devices. Only vaguely understanding that one shared their individual open source project work by publishing it on GitHub, I gathered all my various sketches together and created this, my first ever GitHub repository.
+
+I soon realized I'd made things harder than I needed to by having all of my sketches in one overall repo.  Updating individual projects meant understanding and managing how to do so via `git`, compounded by my attempt at the time to keep my Arduino Sketchbook in sync across various development computers by keeping it in Dropbox rather than on each machine independently.
+
+Fast forward to 2024 and in retrospect I can see how projects and project collections have evolved out of this one large repo into smaller more focused ones and this one isn't actively in use any longer. Rather than delete it though I've kept it just so I have its history.  Everything here has found its way into newer, more focucsed repos where any ongoing development is happening.  The most recent overall README for this repository is intact below, for reference.
+
+
+# Arduino
 
 I think the two things I most appreciate about the Arduino platform are the ease of experimenting with all manner of hardware components, and the incredibly rich collection of great work other people have done and freely contributed back to the community.  Want to experiment with sensors? Batteries? Seven-segment display? Robots? No problem!  Curious about programming with interrupts?  Motor control?  Audio?  Most likely all the components you need and great examples of how to get started are an easy web search away.
 
